@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+
+.Login {
+  background-color: $SG-light05;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__Form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__Inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 20rem;
+  }
+
+  &__Button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
