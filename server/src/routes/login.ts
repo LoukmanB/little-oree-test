@@ -2,6 +2,9 @@
 import { Router, Response, Request } from "express";
 const router = Router();
 
+// Services import
+import { validateEmail, validatePassword, getUserByEmail, generateToken } from '../services/authService.js';
+
 // Local interfaces declaration
 export interface IBody {
   email?: string;
@@ -20,6 +23,24 @@ export default router.post(
     req: Request<unknown, unknown, IBody, unknown>,
     res: Response<IResponse>
   ) => {
-    // Login to be done here
+    const { email, password } = req.body;
+     
+    if (!email || !validateEmail(email) || !password || !validatePassword(password)) {
+      return res.status(400).json({ message: 'Invalid email or password format.' });
+    }
+  
+    try {
+      const products = await getUserByEmail(email);
+      if (products.rows.length === 0) {
+        return res.status(401).json({ message: 'Invalid email or password.' });
+      }
+      const { id } = products.rows[0];
+      const token = generateToken(id);
+  
+      return res.json({ token, userId: id });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({ message: "A server error occured" });
+    }
   }
 );
