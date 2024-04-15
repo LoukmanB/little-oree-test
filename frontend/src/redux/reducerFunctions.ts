@@ -18,6 +18,16 @@ export const setUserAuthInfo = (state: IAppStates, action: AnyAction) => {
   return state;
 };
 
+export const setProducts = (state: IAppStates, action: AnyAction): IAppStates => {
+  if (actions.setProductsAction.match(action)) {
+      return {
+          ...state,
+          products: action.payload.products,
+      };
+  }
+  return state;
+};
+
 export const setInitalState = () => {
   return initialState;
 };

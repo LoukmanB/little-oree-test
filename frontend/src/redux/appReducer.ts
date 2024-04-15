@@ -5,7 +5,7 @@ import * as types from "./constants";
 import { initialState } from "./initialState";
 
 // Services import
-import { setUserAuthInfo, setInitalState } from "./reducerFunctions";
+import { setUserAuthInfo, setProducts, setInitalState } from "./reducerFunctions";
 
 // Interfaces import
 import { IAppStates } from "../interfaces/interfaces";
@@ -20,6 +20,8 @@ export const appReducer: Reducer<IAppStates, AnyAction> = (
   switch (action.type) {
     case types.SET_USER_AUTH_INFO:
       return setUserAuthInfo(state, action);
+    case types.SET_PRODUCTS:
+      return setProducts(state, action);
     case types.SET_INITAL_STATE:
       return setInitalState();
     default:

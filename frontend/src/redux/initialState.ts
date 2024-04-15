@@ -7,4 +7,7 @@ export const initialState: IAppStates = {
     userId: null,
     email: null,
   },
+  products: {
+    products: []
+  },
 };

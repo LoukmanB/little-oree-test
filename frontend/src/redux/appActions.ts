@@ -5,7 +5,7 @@ import { createAction } from "@reduxjs/toolkit";
 import * as types from "./constants";
 
 // Interfaces import
-import { IUserAuthInfo } from "../interfaces/interfaces";
+import { IUserAuthInfo, IProductsState } from "../interfaces/interfaces";
 
 // REDUX ACTIONS TO CALL WHEN REDUX STORE MODIFICATION IS NEEDED
 
@@ -16,3 +16,6 @@ export const setInitalStateAction = createAction(types.SET_INITAL_STATE);
 export const setUserAuthInfoAction = createAction<{
   userAuthInfo: IUserAuthInfo;
 }>(types.SET_USER_AUTH_INFO);
+
+// setting the products data in Redux
+export const setProductsAction = createAction<{products: IProductsState}>(types.SET_PRODUCTS);
